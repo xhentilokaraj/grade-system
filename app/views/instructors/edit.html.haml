@@ -1,0 +1,18 @@
+%h2 Edit Profile
+
+= form_tag instructor_path(@instructor), :method => :put do
+
+  %div.form-group
+    = label :instructor, :name, 'Name'
+    = text_field :instructor, 'name'
+  %div.form-group
+    = label :instructor, :lasname, 'Last Name'
+    = text_field :instructor, 'lastname'
+  %div.form-group
+    = label :instructor, :email, 'Email'
+    = email_field :instructor, 'email'
+  %div.form-group
+    = label :instructor, :password, 'Password'
+    = password_field :instructor, 'password'
+  %div.form-group
+    = submit_tag 'Update', :class => 'btn btn-primary'

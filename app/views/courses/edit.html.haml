@@ -1,0 +1,5 @@
+%h2 Edit Existing Course
+
+= form_tag course_path(@course), :method => :put do
+  = render :partial => 'course_form'
+  = submit_tag 'Update Course Info', :class => 'btn btn-primary'

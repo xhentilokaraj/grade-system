@@ -1,0 +1,22 @@
+- unless @course.errors.empty?
+  #warning
+    Errors prevented this course from being #{controller.action_name}d:
+    %ul
+      - @course.errors.full_messages.each do |error|
+        %li= error
+
+%div.form-group
+  = label :course, :code, 'Code'
+  = text_field :course, 'code'
+
+%div.form-group
+  = label :course, :name, 'Name'
+  = text_field :course, 'name'
+
+%div.form-group
+  = label :course, :semester, 'Semester'
+  = text_field :course, 'semester'
+
+%div.form-group
+  = label :course, :catalog_data, 'Catalog Data'
+  = text_area :course, :catalog_data

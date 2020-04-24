@@ -1,0 +1,15 @@
+%h3 Details about #{@instructor.name + ' ' + @instructor.lastname}
+
+%ul#details
+  %li
+    Name:
+    = @instructor.name
+  %li
+    Last name:
+    = @instructor.lastname
+  %li
+    Email:
+    = @instructor.email
+
+= link_to 'Edit Profile', edit_instructor_path(@instructor)
+-#= link_to 'Back to movie list', movies_path

@@ -1,0 +1,18 @@
+%h2 All Courses
+
+%table#courses.table.table-striped.col-md-12
+  %thead
+    %tr
+      %th Course Code
+      %th Name
+      %th Semester
+      %th More Info
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td= course.code
+        %td= course.name
+        %td= course.semester
+        %td= link_to "More about #{course.code}", course_path(course)
+
+= link_to 'Add new course', new_course_path

@@ -1,0 +1,5 @@
+%h2 Create New course
+
+= form_tag courses_path do
+  = render :partial => 'course_form'
+  = submit_tag 'Save Changes', :class => 'btn btn-primary'
