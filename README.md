@@ -12,6 +12,7 @@ This is coursework project in Engineering of Advanced Web Applications, built wi
 
 
 ## Development process
+### Developing Instructors
 - Modify `config/routes.rb` by adding the first route, the instructors.
 - Generate migration for instructors: `rails generate migration create_instructors`.
 - Modify the migration file in order to properly define the table columns.
@@ -29,9 +30,14 @@ This is coursework project in Engineering of Advanced Web Applications, built wi
 - Add `edit` and `update` methods in the controller.
 - Add `edit.html.haml` for the edit view.
 
+### Courses
 - Modify `config/routes.rb` by adding the `courses` route.
 - `rails generate migration create_courses`
 - Add sample courses to seeds.rb.
-- Creaet course model class.
+- Create course model class.
 - Create courses controller class.
 - Create `courses` folder inside `views` folder. Eventually create all course views in that folder.
+
+### Assessments
+- Modify `config/routes.rb` by adding the `assessments` route.
+- `rails generate migration create_assessments`

@@ -1,0 +1,18 @@
+%h2= 'Assessments Items of ' + @course.name
+
+%table#assessments.table.table-striped.col-md-12
+  %thead
+    %tr
+      %th Assessment Name
+      %th Assessment Weight
+      %th Actions
+  %tbody
+    - @assessments.each do |assessment|
+      %tr
+        %td= assessment.name
+        %td= (assessment.weight * 100).round.to_s + '%'
+        %td= link_to "Edit", edit_course_assessment_path(@course, assessment)
+        %td= link_to 'Delete', course_assessment_path(@course, assessment), method: :delete, data: { confirm: "Are you sure?" }
+
+= link_to 'Add new assessment', new_course_assessment_path
+= link_to 'Back to course list', courses_path

@@ -1,0 +1,5 @@
+%h2 Create New Assessment Item
+
+= form_tag course_assessments_path(@course) do
+  = render :partial => 'assessment_form'
+  = submit_tag 'Save Changes', :class => 'btn btn-primary'

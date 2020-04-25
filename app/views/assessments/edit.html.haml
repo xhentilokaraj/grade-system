@@ -1,0 +1,5 @@
+%h2 Edit Assessment Item
+
+= form_tag course_assessment_path(@course, @assessment), :method => :put do
+  = render :partial => 'assessment_form'
+  = submit_tag 'Save Changes', :class => 'btn btn-primary'
