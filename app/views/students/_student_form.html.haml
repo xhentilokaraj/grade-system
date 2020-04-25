@@ -1,0 +1,22 @@
+- unless @student.errors.empty?
+  #warning
+    Errors prevented this student from being #{controller.action_name}d:
+    %ul
+      - @student.errors.full_messages.each do |error|
+        %li= error
+
+%div.form-group
+  = label :student, :name, 'Name'
+  = text_field :student, 'name'
+
+%div.form-group
+  = label :student, :lastname, 'Last Name'
+  = text_field :student, 'lastname'
+
+%div.form-group
+  = label :student, :email, 'Email'
+  = email_field :student, 'email'
+
+%div.form-group
+  = label :student, :password, 'Password'
+  = password_field :student, :password

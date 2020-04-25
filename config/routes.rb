@@ -3,4 +3,5 @@ GradeSystem::Application.routes.draw do
   resources :courses do
     resources :assessments
   end
+  resources :students
 end

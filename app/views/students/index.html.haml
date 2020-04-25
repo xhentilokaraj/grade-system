@@ -1,0 +1,19 @@
+%h2 All Students
+
+%table#courses.table.table-striped.col-md-12
+  %thead
+    %tr
+      %th Name
+      %th Last Name
+      %th Email
+      %th Actions
+  %tbody
+    - @students.each do |student|
+      %tr
+        %td= student.name
+        %td= student.lastname
+        %td= student.email
+        %td= link_to "Edit", edit_student_path(student)
+        %td= link_to 'Delete', student_path(student), method: :delete, data: { confirm: "Are you sure?" }
+
+= link_to 'Add new student', new_student_path

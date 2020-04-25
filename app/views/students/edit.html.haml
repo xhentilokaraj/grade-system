@@ -1,0 +1,5 @@
+%h2 Edit Existing Student
+
+= form_tag student_path(@student), :method => :put do
+  = render :partial => 'student_form'
+  = submit_tag 'Update Student Info', :class => 'btn btn-primary'
