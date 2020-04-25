@@ -1,0 +1,17 @@
+- unless @enrollment.errors.empty?
+  #warning
+    Errors prevented this course from being #{controller.action_name}d:
+    %ul
+      - @enrollment.errors.full_messages.each do |error|
+        %li= error
+
+= form_tag course_enrollments_path(@course) do
+
+  %div.form-group
+    = label :enrollment, :name, 'Student'
+    %select{name: :student }
+      - @students.each do |student|
+        %option{:name => student.name + ' ' + student.lastname, :value=> student.id}="#{student.name + ' ' + student.lastname}"
+
+  %div.form-group
+  = submit_tag 'Add Student', :class => 'btn btn-primary'
