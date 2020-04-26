@@ -1,0 +1,28 @@
+%h2= 'Grades of ' + @student.name + ' ' + @student.lastname + ' in "' + @course.name + '"'
+
+%table#grades.table.table-hover.table-striped.col-md-12
+  %thead
+    %tr
+      %th Assessment Item
+      %th Grade
+      %th Converted Grade
+      %th Action
+  %tbody
+    - @grades.each do |grade|
+      %tr
+        %td= grade.assessment.name + ' ' + (grade.assessment.weight * 100).round.to_s + '%'
+        %td= grade.grade
+        %td= (grade.assessment.weight * grade.grade).round(2)
+        %td= link_to 'Edit Grade', edit_course_enrollment_grade_path(@course, @enrollment, grade)
+        %td= link_to 'Delete', course_enrollment_grade_path(@course, @enrollment, grade), method: :delete, data: { confirm: "Are you sure?" }
+    %tr
+      %td
+        %strong Overall Grade
+      %td
+      %td
+        %strong= @overall_grade
+
+
+%div
+  = link_to 'Add new grade', new_course_enrollment_grade_path
+  = link_to 'Back to students list', course_enrollments_path(@course)

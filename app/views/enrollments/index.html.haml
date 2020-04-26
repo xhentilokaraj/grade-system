@@ -1,15 +1,17 @@
 %h2= 'Enrollments of ' + @course.name
 
-%table#assessments.table.table-striped.col-md-12
+%table#enrollments.table.table-striped.col-md-12
   %thead
     %tr
       %th Student
+      %th Grades
       %th Action
   %tbody
     - @enrollments.each do |enrollment|
       %tr
         %td= enrollment.student.name + ' ' + enrollment.student.lastname
+        %td= link_to 'Show Grades', course_enrollment_grades_path(@course, enrollment)
         %td= link_to 'Delete', course_enrollment_path(@course, enrollment), method: :delete, data: { confirm: "Are you sure?" }
--#
+
 = link_to 'Add new student', new_course_enrollment_path
--#= link_to 'Back to course list', courses_path
+= link_to 'Back to course', course_path(@course)

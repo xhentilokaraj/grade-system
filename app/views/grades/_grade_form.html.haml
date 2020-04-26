@@ -1,0 +1,19 @@
+- unless @grade.errors.empty?
+  #warning
+    Errors prevented this course from being #{controller.action_name}d:
+    %ul
+      - @grade.errors.full_messages.each do |error|
+        %li= error
+
+%div.form-group
+  = label :grade, :assessment, 'Assessment'
+  %select{name: :assessment }
+    - @assessments.each do |assessment|
+      %option{:name => assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%',
+      :value=> assessment.id}="#{assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%'}"
+
+%div.form-group
+  = label :grade, :grade, 'Grade'
+  = number_field :grade, 'grade', :in => 0..120
+
+

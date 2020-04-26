@@ -1,0 +1,5 @@
+%h2 Add New Grade
+
+= form_tag course_enrollment_grades_path(@course, @enrollment) do
+  = render :partial => 'grade_form'
+  = submit_tag 'Add Grade', :class => 'btn btn-primary'

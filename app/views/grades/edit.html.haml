@@ -1,0 +1,5 @@
+%h2 Edit Grade
+
+= form_tag course_enrollment_grade_path(@course, @enrollment), :method => :put do
+  = render :partial => 'grade_form'
+  = submit_tag 'Save Grade', :class => 'btn btn-primary'
