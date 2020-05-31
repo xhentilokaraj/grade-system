@@ -1,16 +1,46 @@
 !!!
 %html
   %head
-    %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous")
+    %link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous")
     %title Grade System!
     = stylesheet_link_tag 'application', 'media' => 'all', 'data-turbolinks-track' => true
     = javascript_pack_tag 'application'
     = csrf_meta_tags
 
     %body
+      %header
+        %nav.navbar.navbar-expand-lg.navbar-toggleable-lg.navbar-dark.bg-primary.border-bottom.box-shadow.mb-3.text-white
+          %div.container
+            = link_to 'Welcome Page', welcome_path, :class => 'navbar-brand'
+            %div.navbar-collapse.collapse.d-sm-inline-flex.flex-sm-row-reverse
+              %ul.navbar-nav.flex-grow-1
+                - if @current_user
+                  %li.nav-item
+                  - if @current_user.class == Instructor
+                    = link_to 'Main Page', '/instructors_main', :class => 'nav-link text-white', :area => ''
+                  - else
+                    = link_to 'Main Page', '/students_main', :class => 'nav-link text-white', :area => ''
+            %div.navbar-collapse.collapse.d-sm-inline-flex.flex-sm-row-reverse
+              %div.nav.navbar-nav.ml-auto
+                - if @current_user
+                  %li.nav-item
+                    = link_to 'Log Out', logout_path, :method => :post, :class => 'nav-link text-white'
+                - else
+                  %li.nav-item
+                    = link_to 'Log in', login_path, :class => 'nav-link text-white'
+
       %div.container
-        %div.navbar.navbar-expand-lg.bg-primary.text-white
-          %h1.title Grade-Keeping System
+        - if @current_user
+          - text = "Logged as "
+          - if @current_user.class == Instructor
+            - text += "instructor"
+          - else
+            - text += "student"
+          - text += ": #{@current_user.name} #{@current_user.lastname}."
+          = text
+        - else
+          %p Not logged in.
+
         #main
           - if flash[:notice]
             %div.alert.alert-danger

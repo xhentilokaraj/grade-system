@@ -5,5 +5,4 @@ class Enrollment < ActiveRecord::Base
   has_many :grades
 
   validates :course_id, presence: true
-  validates_associated :course
 end

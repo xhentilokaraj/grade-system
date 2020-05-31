@@ -1,3 +1,10 @@
+- unless @instructor.errors.empty?
+  %div.alert.alert-danger
+    Errors prevented instructor details from being #{controller.action_name}d:
+    %ul
+      - @instructor.errors.full_messages.each do |error|
+        %li= error
+
 %h2 Edit Profile
 
 = form_tag instructor_path(@instructor), :method => :put do

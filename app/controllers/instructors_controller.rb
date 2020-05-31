@@ -21,4 +21,7 @@ class InstructorsController < ApplicationController
       render 'edit'
     end
   end
+
+  def home
+  end
 end

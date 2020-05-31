@@ -4,5 +4,7 @@ class Assessment < ActiveRecord::Base
   has_many :grades
 
   validates :course_id, presence: true
-  validates_associated :course
+
+  validates :name, presence: true, length: { maximum: 30}
+  validates :weight, presence: true, :inclusion => 0..1
 end

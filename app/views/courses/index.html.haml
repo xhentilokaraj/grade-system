@@ -15,4 +15,5 @@
         %td= course.semester
         %td= link_to "More about #{course.code}", course_path(course)
 
-= link_to 'Add new course', new_course_path
+- if session[:user_type] == 'instructor'
+  = link_to 'Add new course', new_course_path

@@ -1,0 +1,33 @@
+%h3 Details about #{@assessment.name}
+
+%ul#details
+  %li
+    Name:
+    = @assessment.name
+  %li
+    Weight:
+    = @assessment.weight
+  %li
+    Course:
+    = @assessment.course.name
+
+%h4 Statistics
+%ul#statistics
+  - unless @grades.empty?
+    %li
+      Minimum grade:
+      = @min_grade
+    %li
+      Maximum grade:
+      = @max_grade
+    %li
+      Average grade:
+      = @avg_grade.round(2)
+  - else
+    No grades so far.
+
+- if session[:user_type] == 'instructor'
+  = link_to "Edit Assessment", edit_course_assessment_path(@course, @assessment)
+  = button_to 'Delete', course_assessment_path(@course, @assessment), method: :delete, data: { confirm: "Are you sure?" }, :class => 'btn btn-danger'
+
+= link_to "Back to Assessments List", course_assessments_path(@course)

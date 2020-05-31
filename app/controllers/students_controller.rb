@@ -48,4 +48,8 @@ class StudentsController < ApplicationController
     flash[:notice] = "Student '#{@student.name} #{@student.lastname}' deleted."
     redirect_to students_path
   end
+
+  def home
+    @enrollments = @current_user.enrollments
+  end
 end

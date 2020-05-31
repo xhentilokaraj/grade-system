@@ -1,5 +1,5 @@
 - unless @grade.errors.empty?
-  #warning
+  %div.alert.alert-danger
     Errors prevented this course from being #{controller.action_name}d:
     %ul
       - @grade.errors.full_messages.each do |error|

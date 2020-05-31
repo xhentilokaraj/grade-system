@@ -1,6 +1,7 @@
 class AssessmentsController < ApplicationController
   before_action :get_course
-  before_action :set_assessment, only: [:edit, :update, :destroy]
+  before_action :set_assessment, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, only: [:index, :show]
 
   def get_course
     @course = Course.find(params[:course_id])
@@ -12,6 +13,13 @@ class AssessmentsController < ApplicationController
 
   def index
     @assessments = @course.assessments
+  end
+
+  def show
+    @grades = @assessment.grades
+    @min_grade = @grades.minimum(:grade)
+    @max_grade = @grades.maximum(:grade)
+    @avg_grade = @grades.average(:grade)
   end
 
   def new
@@ -31,7 +39,6 @@ class AssessmentsController < ApplicationController
       flash[:notice] = "#{@assessment.name} was successfully updated."
       redirect_to course_assessments_path(@course)
     else
-      # note, 'edit' template can access @movie's field values!
       render 'edit'
     end
   end

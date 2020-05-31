@@ -7,4 +7,14 @@ GradeSystem::Application.routes.draw do
     end
   end
   resources :students
+
+  root to: redirect('/welcome')
+  get 'welcome' => 'courses#index'
+  get 'profile' => 'instructors#show'
+  get 'instructors_main' => 'instructors#home'
+  get 'students_main' => 'students#home'
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  post 'logout' => 'sessions#destroy'
 end
