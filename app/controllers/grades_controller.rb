@@ -1,11 +1,5 @@
 class GradesController < ApplicationController
   before_action :get_course, :get_course_assessments, :get_enrollment, :get_student
-  before_action :set_grade, only: [:edit, :update, :destroy]
-  before_action :get_assessment, only: [:create, :update]
-
-  def set_grade
-    @grade = Grade.find(params[:id])
-  end
 
   def get_enrollment
     @enrollment = Enrollment.find(params[:enrollment_id])
@@ -23,9 +17,6 @@ class GradesController < ApplicationController
     @course = Course.find(params[:course_id])
   end
 
-  def get_assessment
-    @assessment = Assessment.find(params[:assessment])
-  end
 
   def grade_params
     params.require(:grade)
@@ -42,14 +33,24 @@ class GradesController < ApplicationController
   end
 
   def create
-    @assessment.grades << @enrollment.grades.build(grade_params)
-    redirect_to course_enrollment_grades_path(@course, @enrollment)
+    @assessment = Assessment.find(params[:assessment])
+    @grade = @enrollment.grades.build(grade_params)
+
+    if @assessment.grades << @grade
+      flash[:notice] = "Grade for #{@grade.assessment.name} was successfully created."
+      redirect_to course_enrollment_grades_path(@course, @enrollment)
+    else
+      render 'new'
+    end
+
   end
 
   def edit
+    @grade = Grade.find(params[:id])
   end
 
   def update
+    @grade = Grade.find(params[:id])
     if @grade.update_attributes grade_params
       flash[:notice] = "Grade for #{@grade.assessment.name} was successfully updated."
       redirect_to course_enrollment_grades_path(@course, @enrollment)
@@ -59,6 +60,7 @@ class GradesController < ApplicationController
   end
 
   def destroy
+    @grade = Grade.find(params[:id])
     @grade.destroy
     flash[:notice] = "Grade was successfully removed."
     redirect_to course_enrollment_grades_path(@course, @enrollment)

@@ -4,16 +4,17 @@
     %ul
       - @grade.errors.full_messages.each do |error|
         %li= error
+%div.row
+  %div.col-md-4
+    %div.form-group
+      = label :grade, :assessment, 'Assessment'
+      %select{name: :assessment, class: "form-control" }
+        - @assessments.each do |assessment|
+          %option{:name => assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%',
+          :value=> assessment.id}="#{assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%'}"
 
-%div.form-group
-  = label :grade, :assessment, 'Assessment'
-  %select{name: :assessment }
-    - @assessments.each do |assessment|
-      %option{:name => assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%',
-      :value=> assessment.id}="#{assessment.name + ' ' + (assessment.weight * 100).round.to_s + '%'}"
-
-%div.form-group
-  = label :grade, :grade, 'Grade'
-  = number_field :grade, 'grade', :in => 0..120
+    %div.form-group
+      = label :grade, :grade, 'Grade'
+      = number_field :grade, 'grade', :in => 0..120, class: "form-control"
 
 

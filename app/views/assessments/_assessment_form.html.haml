@@ -1,14 +1,17 @@
 - unless @assessment.errors.empty?
   %div.alert.alert-danger
-    Errors prevented this course from being #{controller.action_name}d:
+    Errors prevented this assessment from being #{controller.action_name}d:
     %ul
       - @assessment.errors.full_messages.each do |error|
         %li= error
+%div.row
+  %div.col-md-4
+    %div.form-group
+      = label :assessment, :name, 'Name'
+      = text_field :assessment, 'name', class: "form-control"
 
-%div.form-group
-  = label :assessment, :name, 'Name'
-  = text_field :assessment, 'name'
-
-%div.form-group
-  = label :assessment, :weight, 'Weight'
-  = number_field :assessment, 'weight', :in => 0..1, :step => 0.01
+    %div.form-group
+      = label :assessment, :weight, 'Weight'
+      %div.row
+        %div.col-md-4
+          = number_field :assessment, 'weight', :in => 0..1, :step => 0.01, class: "form-control"

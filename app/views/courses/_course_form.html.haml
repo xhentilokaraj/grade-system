@@ -5,18 +5,20 @@
       - @course.errors.full_messages.each do |error|
         %li= error
 
-%div.form-group
-  = label :course, :code, 'Code'
-  = text_field :course, 'code'
+%div.row
+  %div.col-md-4
+    %div.form-group
+      = label :course, :code, 'Code'
+      = text_field :course, 'code', class: "form-control"
 
-%div.form-group
-  = label :course, :name, 'Name'
-  = text_field :course, 'name'
+    %div.form-group
+      = label :course, :name, 'Name'
+      = text_field :course, 'name', class: "form-control"
 
-%div.form-group
-  = label :course, :semester, 'Semester'
-  = text_field :course, 'semester'
+    %div.form-group
+      = label :course, :semester, 'Semester'
+      = text_field :course, 'semester', class: "form-control"
 
-%div.form-group
-  = label :course, :catalog_data, 'Catalog Data'
-  = text_area :course, :catalog_data
+    %div.form-group
+      = label :course, :catalog_data, 'Catalog Data'
+      = text_area :course, :catalog_data, class: "form-control"

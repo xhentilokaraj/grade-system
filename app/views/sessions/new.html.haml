@@ -1,10 +1,14 @@
-%h2 Login
 
-= form_tag '/login', :method => :post do
-  = label :user, :email, 'Email'
-  = text_field :user, 'email'
 
-  = label :user, :password, 'Password'
-  = password_field :user, 'password'
-
-  = submit_tag 'Login'
+%div.row
+  %div.col-md-4
+    %h2 Login
+    = form_tag '/login', :method => :post do
+      %div.form-group
+        = label :user, :email, 'Email'
+        = text_field :user, 'email', class: "form-control"
+      %div.form-group
+        = label :user, :password, 'Password'
+        = password_field :user, 'password', class: "form-control"
+      %div.form-group
+        = submit_tag 'Login', class: "btn btn-primary"

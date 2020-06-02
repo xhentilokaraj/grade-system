@@ -5,6 +5,5 @@ class Grade < ActiveRecord::Base
   validates :enrollment_id, presence: true
   validates :assessment_id, presence: true
 
-
   validates :grade, presence: true
 end
