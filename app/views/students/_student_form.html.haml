@@ -5,18 +5,20 @@
       - @student.errors.full_messages.each do |error|
         %li= error
 
-%div.form-group
-  = label :student, :name, 'Name'
-  = text_field :student, 'name'
+%div.row
+  %div.col-md-4
+    %div.form-group
+      = label :student, :name, 'Name'
+      = text_field :student, 'name'
 
-%div.form-group
-  = label :student, :lastname, 'Last Name'
-  = text_field :student, 'lastname'
+    %div.form-group
+      = label :student, :lastname, 'Last Name'
+      = text_field :student, 'lastname'
 
-%div.form-group
-  = label :student, :email, 'Email'
-  = email_field :student, 'email'
+    %div.form-group
+      = label :student, :email, 'Email'
+      = email_field :student, 'email'
 
-%div.form-group
-  = label :student, :password, 'Password'
-  = password_field :student, :password
+    %div.form-group
+      = label :student, :password, 'Password'
+      = password_field :student, :password

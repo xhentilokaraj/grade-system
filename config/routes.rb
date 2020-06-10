@@ -10,7 +10,6 @@ GradeSystem::Application.routes.draw do
 
   root to: redirect('/welcome')
   get 'welcome' => 'courses#index'
-  get 'profile' => 'instructors#show'
   get 'instructors_main' => 'instructors#home'
   get 'students_main' => 'students#home'
 
