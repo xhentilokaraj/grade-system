@@ -6,4 +6,5 @@
 - Install the Heroku PostgreSQL add-on for the application.
 - `heroku addons` - checks the above installation.
 - `heroku config` - Listing the config vars for your app will display the URL that your app is using to connect to the database.
-- `heroku run rake db:migrate` - migrates the database
+- `heroku run rake db:migrate` - migrates the database structure.
+- `heroku run rake db:seed` - seeds the database with data.
