@@ -30,18 +30,18 @@
                     = link_to 'Log in', login_path, :class => 'nav-link text-white'
 
       %div.container
-        - if @current_user
-          - text = "Logged as "
-          - if @current_user.class == Instructor
-            - text += "instructor"
+        %main.pb-3
+          - if @current_user
+            - text = "Logged as "
+            - if @current_user.class == Instructor
+              - text += "instructor"
+            - else
+              - text += "student"
+            - text += ": #{@current_user.name} #{@current_user.lastname}."
+            = text
           - else
-            - text += "student"
-          - text += ": #{@current_user.name} #{@current_user.lastname}."
-          = text
-        - else
-          %p Not logged in.
+            %p Not logged in.
 
-        #main
           - if flash[:notice]
             %div.alert.alert-danger
               #notice.message= flash[:notice]
@@ -50,3 +50,7 @@
               #warning.message= flash[:warning]
 
           = yield
+
+      %footer.border-top.footer.text-muted
+        %div.container
+          &copy; 2020 - Xhentilo Karaj
